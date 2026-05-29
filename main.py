@@ -93,6 +93,13 @@ async def main():
     # Запуск сервиса
     bot_service = BotService(config)
     
+    # Отправляем уведомление о старте
+    try:
+        from src.alerting import send_startup_alert
+        send_startup_alert(config)
+    except Exception as e:
+        logger.error(f"Не удалось отправить уведомление о запуске: {e}")
+        
     try:
         await bot_service.run()
     except KeyboardInterrupt:
