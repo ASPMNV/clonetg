@@ -1,0 +1,40 @@
+{
+  "telegram": {
+    "api_id": 1234567,
+    "api_hash": "your_api_hash_here",
+    "phone": "+1234567890",
+    "session_name": "translator_bot",
+    "source_channel": "@source_channel_name",
+    "target_channel": "@target_channel_name",
+    "device_model": "Desktop",
+    "system_version": "Windows 10",
+    "app_version": "4.8.1 x64",
+    "lang_code": "en",
+    "system_lang_code": "en-US"
+  },
+  "gemini": {
+    "api_keys": [
+      "your_gemini_api_key_here"
+    ],
+    "model": "gemini-3.1-pro",
+    "max_retries": 3
+  },
+  "filters": {
+    "spam_keywords": [
+      "реклама",
+      "промокод",
+      "скидка",
+      "акция"
+    ],
+    "allowed_domains": [
+      "t.me"
+    ],
+    "remove_referral_params": true,
+    "handle_reposts": "summarize"
+  },
+  "processing": {
+    "check_interval": 60,
+    "batch_size": 10,
+    "realtime": true
+  }
+}

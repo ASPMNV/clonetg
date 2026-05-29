@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  telegram-translator:
+    build: .
+    container_name: telegram-translator
+    restart: unless-stopped
+    volumes:
+      - ./config.json:/app/config.json:ro
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./translator_bot.session:/app/translator_bot.session
+      - ./translator_bot.session-journal:/app/translator_bot.session-journal
+    environment:
+      - TZ=Asia/Bangkok
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
