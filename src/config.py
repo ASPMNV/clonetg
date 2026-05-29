@@ -39,11 +39,18 @@ class ProcessingConfig(BaseModel):
     realtime: bool = False  # Режим реального времени через события
 
 
+class AlertConfig(BaseModel):
+    enabled: bool = False
+    bot_token: Optional[str] = None
+    chat_id: Optional[str] = None
+
+
 class Config(BaseModel):
     telegram: TelegramConfig
     gemini: GeminiConfig
     filters: FilterConfig
     processing: ProcessingConfig
+    alerts: AlertConfig = Field(default_factory=AlertConfig)
 
     @classmethod
     def load(cls, path: str = "config.json") -> "Config":

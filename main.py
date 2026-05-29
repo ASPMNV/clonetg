@@ -99,6 +99,11 @@ async def main():
         logger.info("\n👋 Остановка по запросу пользователя")
     except Exception as e:
         logger.error(f"❌ Критическая ошибка: {e}", exc_info=True)
+        try:
+            from src.alerting import send_crash_alert
+            send_crash_alert(config, e)
+        except Exception as alert_error:
+            logger.error(f"Не удалось отправить алерт: {alert_error}")
         sys.exit(1)
 
 
